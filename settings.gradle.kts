@@ -9,4 +9,5 @@ plugins {
 rootProject.name = "server-performance-test"
 
 include(
+    "application:common",
 )
