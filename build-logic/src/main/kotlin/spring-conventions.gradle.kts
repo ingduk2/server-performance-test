@@ -16,7 +16,7 @@ dependencies {
     testRuntimeOnly("com.h2database:h2")
 }
 
-extra["springCloudVersion"] = "2023.0.3"
+extra["springCloudVersion"] = "2024.0.0"
 
 dependencyManagement {
     imports {
