@@ -11,4 +11,5 @@ rootProject.name = "server-performance-test"
 include(
     "application:common",
     "application:external",
+    "application:spring-mvc-webclient",
 )
