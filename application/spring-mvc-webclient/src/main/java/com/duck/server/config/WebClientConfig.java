@@ -12,13 +12,15 @@ import reactor.netty.http.client.HttpClient;
 import reactor.netty.resources.ConnectionProvider;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Configuration
 public class WebClientConfig {
 
-    private static final int DEFAULT_TIMEOUT = 510;
     private static final int MAX_CONNECTIONS = 500; // 최대 연결 수
+    private static final int CONNECTION_TIMEOUT = 200;
+    private static final int DEFAULT_TIMEOUT = 510;
     private static final int MAX_IDLE_TIME = 60; // 최대 유휴 시간 (초)
     private static final int MAX_LIFE_TIME = 300; // 연결 최대 수명 (초)
 
@@ -35,11 +37,11 @@ public class WebClientConfig {
                 .build();
 
         final HttpClient httpClient = HttpClient.create(provider)
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, DEFAULT_TIMEOUT)
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, CONNECTION_TIMEOUT)
                 .responseTimeout(Duration.ofMillis(DEFAULT_TIMEOUT))
                 .doOnConnected(conn ->
-                        conn.addHandlerLast(new ReadTimeoutHandler(DEFAULT_TIMEOUT))
-                                .addHandlerLast(new WriteTimeoutHandler(DEFAULT_TIMEOUT)))
+                        conn.addHandlerLast(new ReadTimeoutHandler(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS))
+                                .addHandlerLast(new WriteTimeoutHandler(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)))
                 ;
 
         final ReactorClientHttpConnector connector = new ReactorClientHttpConnector(httpClient);
