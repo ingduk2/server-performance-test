@@ -10,9 +10,9 @@ import java.util.List;
 @Component
 @ConfigurationProperties(prefix = "external")
 public class ExternalProperties {
-    private final List<String> domains;
+    private final List<String> urls;
 
-    public ExternalProperties(List<String> domains) {
-        this.domains = domains;
+    public ExternalProperties(List<String> urls) {
+        this.urls = urls;
     }
 }

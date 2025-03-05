@@ -15,7 +15,7 @@ public class ApiService {
     private final ApiHttpClient apiHttpClient;
 
     public Flux<ApiResponse> request() {
-        return apiHttpClient.request(externalDomains.getDomains())
+        return apiHttpClient.request(externalDomains.getUrls())
                 .onErrorResume(error -> {
                     log.error("Error in ApiServices: ", error);
                     return Flux.empty();

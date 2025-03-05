@@ -1,5 +1,5 @@
 external:
-  domains:
+  urls:
     - "http://localhost:9090/api/external?sleepMillis=10"
     - "http://localhost:9090/api/external?sleepMillis=100"
     - "http://localhost:9090/api/external?sleepMillis=200"
