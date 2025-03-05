@@ -19,7 +19,7 @@ public class ApiService {
 
     public List<ApiResponse> request() {
         try {
-            return apiHttpClient.request(externalProperties.getDomains());
+            return apiHttpClient.request(externalProperties.getUrls());
         } catch (Exception e) {
             log.error("Exception: {}", e.getMessage());
             return Collections.emptyList();
