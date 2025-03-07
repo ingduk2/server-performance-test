@@ -13,4 +13,5 @@ include(
     "application:external",
     "application:spring-mvc-webclient",
     "application:spring-webflux",
+    "application:vertx",
 )

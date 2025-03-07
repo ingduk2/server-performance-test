@@ -1,0 +1,12 @@
+external:
+  urls:
+    - "http://localhost:9090/api/external?sleepMillis=10"
+    - "http://localhost:9090/api/external?sleepMillis=100"
+    - "http://localhost:9090/api/external?sleepMillis=200"
+    - "http://localhost:9090/api/external?sleepMillis=300"
+    - "http://localhost:9090/api/external?sleepMillis=400"
+    - "http://localhost:9090/api/external?sleepMillis=500"
+    - "http://localhost:9090/api/external?sleepMillis=600"
+    - "http://localhost:9090/api/external?sleepMillis=700"
+    - "http://localhost:9090/api/external?sleepMillis=800"
+    - "http://localhost:9090/api/external?sleepMillis=900"
