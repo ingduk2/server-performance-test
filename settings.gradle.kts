@@ -11,6 +11,7 @@ rootProject.name = "server-performance-test"
 include(
     "application:common",
     "application:external",
+    "application:spring-mvc-resttemplate",
     "application:spring-mvc-webclient",
     "application:spring-webflux",
     "application:vertx",
