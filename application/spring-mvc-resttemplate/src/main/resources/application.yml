@@ -4,3 +4,12 @@ server:
 spring:
   profiles:
     active: local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
