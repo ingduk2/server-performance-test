@@ -15,9 +15,26 @@ import java.util.List;
 public class ApiResponseHandler {
 
     public void handle(RoutingContext routingContext, AsyncResult<List<ApiResponse>> context) {
-        String response = Json.encode(context.result());
+        try {
+            if (context.succeeded()) {
+                String response = Json.encode(context.result());
+                routingContext.response()
+                        .putHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                        .end(response);
+            } else {
+                log.error("Internal Server Error : ", context.cause());
+                sendFailResponse(routingContext, 500, "Internal Server Error");
+            }
+        } catch (Exception e) {
+            log.error("Exception : ", e);
+            sendFailResponse(routingContext, 500, e.getMessage());
+        }
+    }
+
+    private void sendFailResponse(RoutingContext routingContext, int statusCode, String message) {
         routingContext.response()
                 .putHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-                .end(response);
+                .setStatusCode(statusCode)
+                .end(Json.encode(ApiResponse.fail(message)));
     }
 }
