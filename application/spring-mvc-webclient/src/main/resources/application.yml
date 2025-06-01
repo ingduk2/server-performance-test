@@ -1,5 +1,11 @@
 server:
   port: 8080
+  tomcat:
+    accept-count: 100
+    max-connections: 500
+    threads:
+      max: 500
+      min-spare: 200
 
 spring:
   profiles:
